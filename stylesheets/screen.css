@@ -68,6 +68,7 @@ header.top {
   background-color: #a5def1;
   -webkit-transition: height 1s;
   transition: height 1s;
+  z-index: 999;
 }
 header.top + * {
   margin-top: 250px;
@@ -80,14 +81,6 @@ header.top img {
   bottom: 0px;
   width: 180px;
   height: 160px;
-}
-
-#man {
-  position: fixed;
-  top: 60%;
-  left: calc(50% - 20px);
-  width: 40px;
-  height: 60px;
 }
 
 .description {
@@ -117,7 +110,7 @@ header.top img {
   display: inline-block;
   padding: 100px 0px;
   width: 100%;
-  background-color: #ebf7fd;
+  background-color: #2c3e50;
 }
 .profile .container {
   display: inline-block;
@@ -139,17 +132,37 @@ header.top img {
   padding: 0px 20px;
   text-align: left;
   font-size: 22px;
+  color: white;
   line-height: 28px;
 }
 .profile .container .intro h2 {
   font-size: 25px;
+}
+@media all and (min-width: 0px) and (max-width: 425px) {
+  .profile .container img {
+    width: 130px;
+    height: 130px;
+  }
+  .profile .container .intro {
+    width: calc(100% - 170px);
+    font-size: 15px;
+  }
+}
+@media all and (min-width: 425px) and (max-width: 525px) {
+  .profile .container img {
+    width: 150px;
+    height: 150px;
+  }
+  .profile .container .intro {
+    width: calc(100% - 190px);
+    font-size: 18px;
+  }
 }
 
 .interests {
   display: inline-block;
   padding: 100px 0px;
   width: 100%;
-  border: 0.5px solid red;
 }
 .interests h2 {
   padding: 20px 0px;
@@ -165,21 +178,41 @@ header.top img {
   width: calc(100% - 20px);
   height: 800px;
   padding: 0px 10px;
+  font-family: Microsoft JhengHei, monospace;
+  text-align: left;
 }
 .interests .container > div {
+  position: relative;
   display: inline-flex;
   width: calc((100% - 30px)/3);
-  border: 0.5px solid red;
   height: 360px;
-  margin: 0px 0px 5px 5px;
-  border-radius: 5px;
-  margin-top: 5px;
+  margin: 5px;
   cursor: pointer;
+}
+.interests .container > div .content {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: calc(100% - 20px);
+  padding: 10px 10px;
+  height: 0;
+  background-color: #2c3e50;
+  color: white;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 5px;
+  display: none;
+}
+.interests .container > div:hover .content {
+  height: calc(100% - 20px);
+  opacity: 0.6;
+  display: inherit;
 }
 .interests .container > div img {
   display: inline-block;
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 }
 .interests .container > div:nth-child(6n+1) {
   height: 300px;
@@ -190,18 +223,32 @@ header.top img {
 .interests .container > div:nth-child(6n+6) {
   height: 480px;
 }
-@media all and (min-width: 0px) and (max-width: 700px) {
+@media all and (min-width: 0px) and (max-width: 470px) {
+  .interests .container {
+    height: 2200px;
+  }
+  .interests .container > div {
+    display: inline-flex;
+    width: calc(100% - 10px);
+    height: 350px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .interests .container > div:nth-child(n+1) {
+    height: 350px;
+  }
+}
+@media all and (min-width: 470px) and (max-width: 700px) {
   .interests .container {
     height: 1200px;
   }
   .interests .container > div {
     display: inline-flex;
     width: calc((100% - 20px)/2);
-    border: 0.5px solid red;
     height: 360px;
-    margin: 0px 0px 5px 5px;
+    margin: 5px;
     border-radius: 5px;
-    margin-top: 5px;
     cursor: pointer;
   }
   .interests .container > div:nth-child(6n+3) {
@@ -217,7 +264,7 @@ header.top img {
 
 .experience {
   display: inline-block;
-  padding: 60px 0px;
+  padding: 30px 0px 130px 0px;
   width: 100%;
 }
 .experience h2 {
@@ -236,18 +283,19 @@ header.top img {
 }
 .experience .container ul > li {
   text-align: left;
-  font-size: 22px;
+  font-size: 20px;
   font-family: Microsoft JhengHei, monospace;
   line-height: 27px;
 }
 
 .projects {
   display: inline-block;
-  padding: 100px 0px;
+  padding: 110px 0px 50px 0px;
   width: 100%;
-  background-color: #2980b9;
+  background-color: #2c3e50;
 }
 .projects h2 {
+  color: white;
   padding: 20px 0px;
   font-size: 35px;
   font-family: Microsoft JhengHei, monospace;
@@ -256,17 +304,88 @@ header.top img {
   display: inline-block;
   max-width: 700px;
   width: 100%;
-  height: 55px;
-  border: 0.5px solid red;
 }
 .projects header a {
   float: left;
   display: inline-block;
+  font-family: Microsoft JhengHei, monospace;
+  font-size: 25px;
+  text-decoration: none;
+  color: white;
   width: calc(100%/3);
+  height: 100%;
+  background-color: #7ec0e4;
+  padding: 25px 0px;
+  cursor: pointer;
+}
+@media all and (min-width: 0px) and (max-width: 420px) {
+  .projects header a {
+    font-size: 27px;
+  }
+}
+@media all and (min-width: 420px) and (max-width: 605px) {
+  .projects header a {
+    font-size: 20px;
+  }
 }
 .projects .container {
   display: inline-block;
   padding: 0px;
+  max-width: 680px;
   width: calc(100% - 20px);
+  height: 400px;
   padding: 0px 10px;
+  background-color: #2c3e50;
+  font-family: Microsoft JhengHei, monospace;
+}
+.projects .container > .project {
+  position: relative;
+  display: none;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  padding: 20px 20px;
+  background-color: white;
+  text-align: left;
+}
+.projects .container > .project > * {
+  float: left;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: left;
+}
+.projects .container > .project .arrow-up {
+  position: absolute;
+  left: calc((100%/3)/2 - 10px);
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 10px solid white;
+}
+.projects .container .current {
+  display: inherit;
+}
+@media all and (min-width: 0px) and (max-width: 410px) {
+  .projects .container {
+    height: 480px;
+  }
+}
+@media all and (min-width: 410px) and (max-width: 450px) {
+  .projects .container {
+    height: 450px;
+  }
+}
+.projects .container .links {
+  display: inline-block;
+  width: 100%;
+  padding-top: 50px;
+}
+.projects .container .links a {
+  display: inline-block;
+}
+.projects .container .links a img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
 }

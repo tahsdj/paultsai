@@ -18,6 +18,7 @@ header.top
 	background-color: #A5DEF1
 	-webkit-transition: height 1s
 	transition: height 1s
+	z-index: 999
 	+ *
 		margin-top: 250px
 	img
@@ -28,12 +29,6 @@ header.top
 		bottom: 0px
 		width: 180px
 		height: 160px
-#man
-	position: fixed
-	top: 60%
-	left: calc(50% - 20px)
-	width: 40px
-	height: 60px
 .description
 	display: inline-block
 	padding: 100px 0px
@@ -55,8 +50,7 @@ header.top
 	display: inline-block
 	padding: 100px 0px
 	width: 100%
-	background-color: #EBF7FD
-	
+	background-color: #2C3E50
 	.container
 		display: inline-block
 		max-width: 700px
@@ -75,14 +69,28 @@ header.top
 			padding: 0px 20px
 			text-align: left
 			font-size: 22px
+			color: white
 			line-height: 28px
 			h2
 				font-size: 25px
+		+media_range(0px,425px)
+			img
+				width: 130px
+				height: 130px
+			.intro
+				width: calc(100% - 170px)
+				font-size: 15px	
+		+media_range(425px,525px)
+			img
+				width: 150px
+				height: 150px
+			.intro
+				width: calc(100% - 190px)
+				font-size: 18px				
 .interests
 	display: inline-block
 	padding: 100px 0px
 	width: 100%
-	border: $border-type
 	h2
 		padding: 20px 0px
 		font-size: 35px
@@ -96,35 +104,63 @@ header.top
 		width: calc(100% - 20px)
 		height: 800px
 		padding: 0px 10px
+		font-family: $font-family
+		text-align: left
 		>div
+			position: relative
 			display: inline-flex
 			width: calc((100% - 30px)/3) 
-			border: $border-type
 			height: 360px
-			margin: 0px 0px 5px 5px
-			border-radius: 5px
-			margin-top: 5px
+			margin: 5px 
 			cursor: pointer
+			.content
+				position: absolute
+				bottom: 0px
+				left: 0px
+				width: calc(100% - 20px)
+				padding: 10px 10px
+				height: 0
+				background-color: #2C3E50
+				color: white
+				font-size: 18px
+				line-height: 25px
+				border-radius: 5px
+				display: none
+			&:hover
+				.content
+					height: calc(100% - 20px)
+					opacity: 0.6
+					display: inherit
 			img
 				display: inline-block
 				width: 100%
 				height: 100%
+				border-radius: 5px
 			&:nth-child(6n+1)
 				height: 300px
 			&:nth-child(6n+5)
 				height: 250px
 			&:nth-child(6n+6)
 				height: 480px
-		+media_range(0px,700px)
+		+media_range(0px,470px)
+			height: 2200px
+			>div
+				display: inline-flex
+				width: calc(100% - 10px) 
+				height: 350px
+				margin: 5px
+				border-radius: 5px
+				cursor: pointer
+				&:nth-child(n+1)
+					height: 350px
+		+media_range(470px,700px)
 			height: 1200px
 			>div
 				display: inline-flex
 				width: calc((100% - 20px)/2) 
-				border: $border-type
 				height: 360px
-				margin: 0px 0px 5px 5px
+				margin: 5px
 				border-radius: 5px
-				margin-top: 5px
 				cursor: pointer
 				&:nth-child(6n+3)
 					height: 300px
@@ -134,7 +170,7 @@ header.top
 					height: 400px
 .experience
 	display: inline-block
-	padding: 60px 0px
+	padding: 30px 0px 130px 0px
 	width: 100%
 	h2
 		padding: 20px 0px
@@ -149,15 +185,16 @@ header.top
 			display: inline-block
 		ul>li
 			text-align: left
-			font-size: 22px
+			font-size: 20px
 			font-family: $font-family
 			line-height: 27px
 .projects
 	display: inline-block
-	padding: 100px 0px
+	padding: 110px 0px 50px 0px
 	width: 100%
-	background-color: #2980B9
+	background-color: #2C3E50
 	h2
+		color: white
 		padding: 20px 0px
 		font-size: 35px
 		font-family: $font-family
@@ -165,15 +202,68 @@ header.top
 		display: inline-block
 		max-width: 700px
 		width: 100%
-		height: 55px
-		border: $border-type
 		a
 			float: left
 			display: inline-block
+			font-family: $font-family
+			font-size: 25px
+			text-decoration: none
+			color: white
 			width: calc(100%/3)
+			height: 100%
+			background-color: #7EC0E4
+			padding: 25px 0px
+			cursor: pointer
+		+media_range(0px,420px)
+			a
+				font-size: 27px
+		+media_range(420px,605px)
+			a
+				font-size: 20px
 	.container
 		display: inline-block
 		padding: 0px 
+		max-width: 700px-20px
 		width: calc(100% - 20px)
+		height: 400px
 		padding: 0px 10px
-
+		background-color: #2C3E50
+		font-family: $font-family
+		>.project
+			position: relative
+			display: none
+			width: calc(100% - 40px)
+			height: calc(100% - 40px)
+			padding: 20px 20px
+			background-color: white
+			text-align: left
+			>*
+				float: left
+				font-size: 16px
+				line-height: 19px
+				text-align: left
+			.arrow-up
+				position: absolute
+				left: calc((100%/3)/2 - 10px)
+				top: -10px
+				width: 0
+				height: 0
+				border-left: 20px solid transparent
+				border-right: 20px solid transparent
+				border-bottom: 10px solid white
+		.current
+			display: inherit
+		+media_range(0px,410px)
+			height: 480px
+		+media_range(410px,450px)
+			height: 450px
+		.links
+			display: inline-block
+			width: 100%
+			padding-top: 50px 
+			a
+				display: inline-block
+				img
+					display: inline-block
+					width: 30px
+					height: 30px
